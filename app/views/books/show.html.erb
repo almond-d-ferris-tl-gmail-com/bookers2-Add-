@@ -8,4 +8,8 @@
   <%= @book.body %></p>
   <!-- <p>ユーザーネーム-->
 <p><%= @book.user.name %></p>
+
+<% if @book.user == current_user %>
+    <%= link_to "削除", book_path(@book), method: :delete %>
+<% end %>
 </div>
