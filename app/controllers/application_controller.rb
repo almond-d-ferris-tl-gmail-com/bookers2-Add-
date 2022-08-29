@@ -1,12 +1,9 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
  # ログイン後の遷移先を変更
     before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_up_path_for(resource)
-    books_path
-  end
-
-  def after_Log_in_path_for(resource)
+  def after_sign_in_path_for(resource)
     books_path
   end
 
@@ -17,11 +14,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
-  end
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:Log_in, keys: [:email])
+    added_attrs = [:name, :email, :password, :password_confirmation, :remember_me]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
 end
