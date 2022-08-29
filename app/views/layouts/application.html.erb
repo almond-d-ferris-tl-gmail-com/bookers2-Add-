@@ -14,22 +14,32 @@
 <body>
   <header>
     <% if user_signed_in? %>
-    <li>
+    <div>
       <%= link_to '投稿フォーム', new_book_path %>
-    </li>
-    <li>
+    </div>
+    <div>
       <%= link_to 'マイページ', user_path(current_user.id) %>
-    </li>
-    <li>
+    </div>
+    <div>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    </li>
+    </div>
     <% else %>
-    <li>
+    <br>
+    <div>
+        <%= link_to "Bookers", top_path %>
+    </div>
+    <div>
+        <%= link_to "Home", top_path %>
+    </div>
+    <div>
+        <%= link_to "About", about_path %>
+    </div>
+    <div>
         <%= link_to "Log in", new_user_session_path %>
-    </li>
-    <li>
+    </div>
+    <div>
         <%= link_to "Sign up", new_user_registration_path %>
-    </li>
+    </div>
 
     <% end %>
   </header>
