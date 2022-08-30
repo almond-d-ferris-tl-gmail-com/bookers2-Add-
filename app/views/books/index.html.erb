@@ -10,23 +10,29 @@
   transform: translate3d(0, 0, 0);
 }</style>
 
-
-
-
     <link rel="stylesheet" media="all" href="/assets/application-d12397cbc3a266ce5a99f7b588223090c55ca04a439953bb5f9304395de93fc3.css" data-turbolinks-track="reload">
     <script src="/assets/application-114264dd93c8ff30e4335b71eed7949d66c4e7a8eb62e2de6284c046fe07104b.js" data-turbolinks-track="reload"></script>
-  <title>WebCampBackendNew</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="dwi41SM/TIGKc+Vf1JFlHWOcVlh4KUQPTJIrzYtzNSB1zWez9CAdP2kYx7kvYzE6vR6hw5NL5K3XQLirCOEegw=="></head>
+  <title>Bookers2</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="dwi41SM/TIGKc+Vf1JFlHWOcVlh4KUQPTJIrzYtzNSB1zWez9CAdP2kYx7kvYzE6vR6hw5NL5K3XQLirCOEegw=="></head>
 
   <body>
     <p id="notice"></p>
     <table>
     <tbody>
-      <td>
-    <h2>User info</h2>
 
+<TABLE BORDER="0" valign="top" align="center" cellpadding="50">
+<TR>
+<TD valign="top">
+<table border="0">
+<tr>
+
+<td><!--テーブル１-->
+      <h2>User info</h2>
+        <%= image_tag current_user.get_profile_image(100,100) %>
+        <h4>name <%= current_user.name %></h4>
+        <h4>introduction</h4>
+            <!--画像とユーザー名を表示させる-->
         <div>
           <%= link_to 'マイページ', user_path(current_user.id) %>
-            <!--index内に移動させる-->
         </div>
 
     <h2>New book</h2>
@@ -41,20 +47,31 @@
 
     <%= form_with model: @book, url: '/books', method: :post do |f| %>
       <div class="field">
-        <%= f.label :title %><br>
-        <%= f.text_field :Title %>
+        <%= f.label :Title %><br>
+        <%= f.text_field :title %>
       </div>
       <div class="field">
-        <%= f.label :body %><br>
-        <%= f.text_field :Opinion %>
+        <%= f.label :Opinion %><br>
+        <%= f.text_field :body %>
       </div>
       <div class="actions">
         <%= f.submit 'Create Book' %><br>
       </div>
     <% end %>
-      </td>
-      <td>
-    <h2>Book detail</h2>
+    </div>
+
+</td>
+
+</tr>
+</table>
+</TD>
+
+<TD>
+<table border="0">
+<tr>
+
+<td><!--テーブル2-->
+      <h2>Book detail</h2>
         <% @books.each do |book| %>
         <!--@book:インスタンス変数-->
         <!--↑のeach文があるから↓のbook.~が使える-->
@@ -74,11 +91,18 @@
             <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
           </tr>
         <% end %>
-      </td>
-      </tbody>
-    </table>
 
-<p>CopyRight Infratop.inc</p>
+</td>
+
+</tr>
+</table>
+</TD>
+</TR>
+</TABLE>
+
+<p align="center">CopyRight Infratop.inc</p>
 </body></html>
 
 <!---->
+sign up:Welcome! You have signed up successfully.
+log in:Signed in successfully.
