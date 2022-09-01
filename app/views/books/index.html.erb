@@ -16,10 +16,8 @@
 
   <body>
     <p id="notice"></p>
-    <table>
-    <tbody>
 
-<TABLE BORDER="0" valign="top" align="center" cellpadding="50">
+<TABLE BORDER="0" align="center" cellpadding="50">
 <TR>
 <TD valign="top">
 <table border="0">
@@ -28,7 +26,9 @@
 <td><!--テーブル１-->
       <h2>User info</h2>
         <%= image_tag current_user.get_profile_image(100,100) %>
+      <hr size="1" width="120%" color="silver">
         <h4>name <%= current_user.name %></h4>
+      <hr size="1" width="120%" color="silver">
         <h4>introduction</h4>
             <!--画像とユーザー名を表示させる-->
         <div>
@@ -66,12 +66,12 @@
 </table>
 </TD>
 
-<TD>
-<table border="0">
+<TD valign="top">
+<table border="0" valign="top">
 <tr>
-
-<td><!--テーブル2-->
+    <td><!--テーブル2-->
       <h2>Book detail</h2>
+      <hr size="1" width="400%" color="silver">
         <% @books.each do |book| %>
         <!--@book:インスタンス変数-->
         <!--↑のeach文があるから↓のbook.~が使える-->
@@ -91,16 +91,14 @@
             <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
           </tr>
         <% end %>
-
 </td>
-
 </tr>
 </table>
+      <hr size="1" width="400%" color="silver">
 </TD>
 </TR>
 </TABLE>
-
-<p align="center">CopyRight Infratop.inc</p>
+<p align="center" style="padding-top: 400px">CopyRight Infratop.inc</p>
 </body></html>
 
 <!---->

@@ -1,27 +1,95 @@
-<!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
+<html><head><style type="text/css">.turbolinks-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 9999;
+  transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}</style>
 
-  <% if @user == user_signed_in? %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-</div>
+    <link rel="stylesheet" media="all" href="/assets/application-d12397cbc3a266ce5a99f7b588223090c55ca04a439953bb5f9304395de93fc3.css" data-turbolinks-track="reload">
+    <script src="/assets/application-114264dd93c8ff30e4335b71eed7949d66c4e7a8eb62e2de6284c046fe07104b.js" data-turbolinks-track="reload"></script>
+  <title>Bookers2</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="dwi41SM/TIGKc+Vf1JFlHWOcVlh4KUQPTJIrzYtzNSB1zWez9CAdP2kYx7kvYzE6vR6hw5NL5K3XQLirCOEegw=="></head>
 
-<!-- ユーザーの投稿一覧 -->
+  <body>
+    <p id="notice"></p>
+    <table>
+    <tbody>
 
-<% @book.each do |book| %>
-<div>
-  <%= link_to book_path(book.id) do %>
-    <%= image_tag book.get_image %>
-  <% end %>
-<!-- 投稿ユーザー画像： -->
-  <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-<!-- ショップ名： -->
-  <p><%= book.title %></p>
-<!-- 説明： -->
-  <p><%= book.body %></p>
-<!-- ユーザーネーム： -->
-  <p><%= book.user.name %></p>
-</div>
-<% end %>
+<TABLE align="center" cellpadding="50">
+<TR>
+<TD valign="top">
+<table>
+<tr>
+
+<td><!--テーブル１-->
+      <h2>User info</h2>
+        <%= image_tag current_user.get_profile_image(100,100) %>
+      <hr size="1" width="120%" color="silver">
+        <h4>name <%= current_user.name %></h4>
+      <hr size="1" width="120%" color="silver">
+        <h4>introduction</h4>
+            <!--画像とユーザー名を表示させる-->
+        <div>
+          <%= link_to 'マイページ', user_path(current_user.id) %>
+        </div>
+
+    <h2>New book</h2>
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %>errors prohibited this obj from being saved:
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+
+    <%= form_with model: @book, url: '/books', method: :post do |f| %>
+      <div class="field">
+        <%= f.label :Title %><br>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :Opinion %><br>
+        <%= f.text_field :body %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Create Book' %><br>
+      </div>
+    <% end %>
+    </div>
+
+</td>
+
+</tr>
+</table>
+</TD>
+
+<TD valign="top">
+<table>
+<tr>
+    <td><!--テーブル2-->
+    <h2>Books</h2>
+      <hr size="1" width="400%" color="silver">
+      <table  cellpadding=15>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+      </thead>
+</table>
+      <hr size="1" width="400%" color="silver">
+</TD>
+</TR>
+</TABLE>
+
+<p align="center" style="padding-top: 400px">CopyRight Infratop.inc</p>
+</body></html>
+
+<!---->
+sign up:Welcome! You have signed up successfully.
+log in:Signed in successfully.

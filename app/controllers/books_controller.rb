@@ -17,12 +17,12 @@ class BooksController < ApplicationController
   def index
     @books = Book.all #同じアクション内で同じメソッドは使えない
     @book = Book.new
-    
+
   end
 
   def show
     @book = Book.find(params[:id])
-    # @book = Book.all
+    @books = Book.all #同じアクション内で同じメソッドは使えない
   end
 
   def edit
