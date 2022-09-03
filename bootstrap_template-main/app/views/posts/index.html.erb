@@ -1,17 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
-
 <div class="container">  <!-- この行を追加 -->
 <div class="row">      <!-- この行を追加 -->
 
-<!-- 以下を追加 -->
-<div class="col-lg-4" style="background-color: orange;">
-  <h2>サイドバー</h2>
-</div>
-
+ <!-- 以下を追加 -->
+    <div class="col-lg-4" style="background-color: orange;">
+      <h2>サイドバー</h2>
+    </div>
 <div class="col-lg-8">  <!-- この行を追加 -->
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -35,10 +32,9 @@
     <% end %>
   </tbody>
 </table>
-
-</div>  <!-- この行を追加 -->
-</div>  <!-- この行を追加 -->
-</div>    <!-- この行を追加 -->
+ </div>  <!-- この行を追加 -->
+ </div>  <!-- この行を追加 -->
+ </div>    <!-- この行を追加 -->
 <br>
 
 <%= link_to 'New Post', new_post_path, class: "btn btn-secondary" %>

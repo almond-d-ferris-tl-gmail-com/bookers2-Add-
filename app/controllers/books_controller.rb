@@ -17,7 +17,6 @@ class BooksController < ApplicationController
   def index
     @books = Book.all #同じアクション内で同じメソッドは使えない
     @book = Book.new
-
   end
 
   def show

@@ -1,83 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>BootstrapTemplate</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand p-3" href="/"></a>
-          <!--<= image_tag('logo.png') %>-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <div class="bg-dark text-white pt-5 pb-4">
-            <ul class="navbar-nav ml-auto">
-            <div class="container">
-            <div class="row no-gutters">
-            <div class="col-md-4">
-
-            <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Bookers", top_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Home", user_path(current_user.id) %>
-                      <!--books_path-->
-            </li>
-            <li class="nav-item">
-              <%= link_to "Users", top_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Books", top_path %>
-              <!--path名を変える、show-->
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-            </li>
-
-            <% else %>
-            <li class="nav-item">
-              <%= link_to "Bookers", top_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Home", top_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "About", about_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log in", new_user_session_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Sign up", new_user_registration_path %>
-            </li>
-            <% end %>
-            </ul>
-            </div>
-            </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main class="mb-auto">
-
-<h1 class="text-danger">Hello, world!</h1>
-
+  <body>
     <%= yield %>
-    </main>
-    <footer align="center">CopyRight Infratop.inc</footer>
   </body>
-  </html>
+</html>
