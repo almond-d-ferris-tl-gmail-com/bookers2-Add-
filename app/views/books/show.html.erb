@@ -1,31 +1,3 @@
-<html><head><style type="text/css">.turbolinks-progress-bar {
-  position: fixed;
-  display: block;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: #0076ff;
-  z-index: 9999;
-  transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
-  transform: translate3d(0, 0, 0);
-}</style>
-
-    <link rel="stylesheet" media="all" href="/assets/application-d12397cbc3a266ce5a99f7b588223090c55ca04a439953bb5f9304395de93fc3.css" data-turbolinks-track="reload">
-    <script src="/assets/application-114264dd93c8ff30e4335b71eed7949d66c4e7a8eb62e2de6284c046fe07104b.js" data-turbolinks-track="reload"></script>
-  <title>Bookers2</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="dwi41SM/TIGKc+Vf1JFlHWOcVlh4KUQPTJIrzYtzNSB1zWez9CAdP2kYx7kvYzE6vR6hw5NL5K3XQLirCOEegw=="></head>
-
-  <body>
-    <p id="notice"></p>
-    <table>
-    <tbody>
-
-<TABLE BORDER="0" valign="top" align="center" cellpadding="50">
-<TR>
-<TD valign="top">
-<table border="0">
-<tr>
-
-<td><!--テーブル１-->
       <h2>User info</h2>
         <%= image_tag current_user.get_profile_image(100,100) %>
         <h4>name <%= current_user.name %></h4>
@@ -56,7 +28,7 @@
       </div>
       <div class="actions">
         <%= f.submit 'Create Book' %><br>
-      </div>
+</div>
     <% end %>
     </div>
 
@@ -96,28 +68,8 @@
 </TD>
 </TR>
 </TABLE>
-
-<p align="center">CopyRight Infratop.inc</p>
-</body></html>
-
 <!---->
 sign up:Welcome! You have signed up successfully.
 log in:Signed in successfully.
-
-<h1>Books</h1>
-
-<div>
-  <p><%= image_tag 'no_image.jpg' %>
-  <!--Title-->
-  <%= @book.title %>
-  <!--Opinion-->
-  <%= @book.body %></p>
-  <!-- <p>ユーザーネーム-->
-<p><%= @book.user.name %></p>
-
-<% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
-<% end %>
-</div>
 
 

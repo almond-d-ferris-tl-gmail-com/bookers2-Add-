@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     #@book = Book.find(params[:id])
     @books = Book.all #同じアクション内で同じメソッドは使えない
     @book = Book.new
-    #@user = User.find(params[:id])
+    @user = User.find(params[:id])
     #@book = @user.book.page(params[:page])
   end
 
