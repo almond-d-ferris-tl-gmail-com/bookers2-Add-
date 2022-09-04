@@ -1,75 +1,42 @@
-      <h2>User info</h2>
-        <%= image_tag current_user.get_profile_image(100,100) %>
-        <h4>name <%= current_user.name %></h4>
-        <h4>introduction</h4>
-            <!--画像とユーザー名を表示させる-->
-        <div>
-          <%= link_to 'マイページ', user_path(current_user.id) %>
-        </div>
+<!--Book detail(.com/books/数字)-->
+<%= render "/layouts/leftbar" , book:@book %>
+  <div class="col-md-8" offset-md-l>  <!--"col-lg-8"→"col-md-8" offset-md-lに変更-->
 
-    <h2>New book</h2>
-      <% if @book.errors.any? %>
-      <%= @book.errors.count %>errors prohibited this obj from being saved:
-      <ul>
-        <% @book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-      <% end %>
-
-    <%= form_with model: @book, url: '/books', method: :post do |f| %>
-      <div class="field">
-        <%= f.label :Title %><br>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
-        <%= f.label :Opinion %><br>
-        <%= f.text_field :body %>
-      </div>
-      <div class="actions">
-        <%= f.submit 'Create Book' %><br>
-      </div>
-        <% end %>
-    </div>
-
-</td>
-
-</tr>
-</table>
-</TD>
-
-<TD>
-<table border="0">
-<tr>
-    <td><!--テーブル2 create後-->
+    <table class="table table-striped">
+<!--
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+-->
+  <tbody>
       <h2>Book detail</h2>
-        <% @books.each do |book| %>
-        <!--@book:インスタンス変数-->
-        <!--↑のeach文があるから↓のbook.~が使える-->
-        <!--end文を忘れない-->
-          <tr>
+    <% @books.each do |book| %>
+          <tr><td>
           <!--投稿ユーザー画像-->
-            <td><%= image_tag 'no_image.jpg' %><br>
+          <%= link_to user_path(current_user) do %>
+            <%= image_tag current_user.get_profile_image(100,100) %><br>
           <!-- <p>ユーザーネーム-->
-            <%= link_to book.user.name, book_path(book.id) %></td>
+            <%= book.user.name %>
+            <% end %></td>
           <!--Title-->
-            <%= link_to book_path(book.id) do %>
-            <td><%= book.title %></td>
-            <% end %>
+            <td><%= link_to book_path(book.id) do %>
+            <%= book.title %>
+            <% end %></td>
           <!--Opinion-->
-            <td><%= book.body %>
-            <td><%= link_to "Edit", edit_user_path(book.id) %></td>
-            <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
+            <td><%= book.body %></td>
+
+            <td><%= link_to "Edit", edit_book_path(book.id), class: "btn btn-success" %></td>
+            <td><%= link_to "Destroy", book_path(book.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %></td>
           </tr>
         <% end %>
-</td>
-</tr>
+  </tbody>
 </table>
-</TD>
-</TR>
-</TABLE>
-<!---->
-sign up:Welcome! You have signed up successfully.
-log in:Signed in successfully.
-
-
+</div>
+</div>
+</div>
+<br>

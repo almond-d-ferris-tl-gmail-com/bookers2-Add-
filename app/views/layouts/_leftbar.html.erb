@@ -1,0 +1,48 @@
+      <p id="notice"><%= notice %></p>
+
+  <div class="container">  <!-- この行を追加 -->
+  <div class="row">      <!-- この行を追加 -->
+  <!-- 以下を追加 -->
+  <div class="col-lg-3"><!--4→３に変更-->
+      <h2>User info</h2>
+        <%= image_tag current_user.get_profile_image(100,100) %><br>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><pre>name &#009;&#009; <%= current_user.name %></pre></th>
+        </tr>
+        <tr>
+           <!--画像とユーザー名を表示させる-->
+          <th>introduction</th>
+        </tr>
+      </thead>
+    </table>
+
+        <div>
+          <%= link_to 'マイページ', edit_user_path(current_user.id) %>
+        </div><br>
+
+    <h2>New book</h2>
+      <% if book.errors.any? %>
+      <%= book.errors.count %>errors prohibited this obj from being saved:
+      <ul>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    <%= form_with model: book, url: '/books', method: :post do |f| %>
+      <div class="field">
+        <%= f.label :Title %><br>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :Opinion %><br>
+        <%= f.text_field :body %>
+      </div><br>
+      <div class="actions">
+          <%= f.submit "Create Book" , class: 'sign-btn' %>
+          <% end %>
+      </div>
+  </div>
