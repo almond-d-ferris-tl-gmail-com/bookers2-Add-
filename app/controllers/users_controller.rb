@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     @books = Book.all #同じアクション内で同じメソッドは使えない
     @book = Book.new
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   def show
@@ -16,6 +16,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user.id)
+  end
+
+# 投稿データのストロングパラメータ
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :profile_image_id, :introduction)
   end
 
 end

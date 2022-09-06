@@ -19,13 +19,14 @@
         <% @books.each do |book| %>
           <tr>
           <!--投稿ユーザー画像-->
-            <td><%= image_tag 'no_image.jpg' %><br>
+            <td><%= image_tag 'no_image.jpg' %></td>
           <!--Title-->
             <td><%= link_to book_path(book.id) do %>
             <%= book.title %>
             <% end %></td>
           <!--Opinion-->
-            <td><%= book.body %>
+            <td><%= book.body %></td>
+            <td></td>
           </tr>
         <% end %>
   </tbody>

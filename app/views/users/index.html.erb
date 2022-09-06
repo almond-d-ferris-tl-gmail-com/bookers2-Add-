@@ -1,4 +1,5 @@
 <!--Users(.com/users)-->
+<%= render "/layouts/leftbar" , book:@book %>
   <div class="col-md-8" offset-md-l>  <!--"col-lg-8"→"col-md-8" offset-md-lに変更-->
 
     <table class="table table-striped">
@@ -20,6 +21,7 @@
           <!-- <p>ユーザーネーム-->
             <td><%= book.user.name %></td>
             <td><%= link_to "show", user_path(current_user) %></td>
+            <td></td>
           </tr>
         <% end %>
   </tbody>
