@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get "homes/about" => "homes#about", as: "about"
   resources :books, only: [:create, :index, :show, :destroy, :edit]# :new,
   resources :users, only: [:index, :show, :edit, :update]
+  patch 'books/:id/edit' => 'books#update'
+
+  before_action :authenticate_user!, except: [:show, :index]
 end
