@@ -7,10 +7,12 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    if @book.save!
+    @books = Book.all
+    flash[:notice] = "successfully"
+    if @book.save
       redirect_to book_path(@book.id)
     else
-      render :new
+      render :index
     end
   end
 
@@ -36,14 +38,18 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to book_path(@book)
+    if @book.update(book_params)
+      redirect_to book_path(@book.id)
+    else
+      render :edit
+    end
+
   end
 
 # 投稿データのストロングパラメータ
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body).merge(user_id: current_user.id)
   end
 end

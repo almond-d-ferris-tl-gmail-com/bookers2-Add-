@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     #@user = User.find(params[:id])
   end
 
+  def create
+    flash[:notice] = "successfully"
+  end
+
   def show
     #@book = Book.find(params[:id])
     @book = Book.new
@@ -22,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
+    flash[:notice] = "successfully"
   end
 
 # 投稿データのストロングパラメータ

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # ログインしていない場合、top画面に移動する
-  before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user!, except: [:top, :about]
 
   protect_from_forgery with: :exception
  # ログイン後の遷移先を変更
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    top_path
+    root_path
   end
 
   protected
