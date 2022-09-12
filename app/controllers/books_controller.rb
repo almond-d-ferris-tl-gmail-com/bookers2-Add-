@@ -8,8 +8,8 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @books = Book.all
-    flash[:notice] = "successfully"
     if @book.save
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id)
     else
       render :index
@@ -24,9 +24,17 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @books = Book.all #同じアクション内で同じメソッドは使えない
+    @book.user_id = current_user.id
+    @user = @book.user
+    # if @book.user == current_user
+    #   render "show"
+    # else
+    #   redirect_to books_path
+    # end
   end
 
   def edit
+    @book = Book.find(params[:id])
     @book = Book.find(params[:id])
   end
 
@@ -39,6 +47,7 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
+      flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
     else
       render :edit
@@ -50,6 +59,8 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body).merge(user_id: current_user.id)
+    params.require(:book).permit(:title, :body)
   end
 end
+
+# .merge(user_id: current_user.id)

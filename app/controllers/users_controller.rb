@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     @books = Book.all #同じアクション内で同じメソッドは使えない
     @book = Book.new
+    @users = User.all
     #@user = User.find(params[:id])
   end
 
@@ -20,13 +21,17 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    flash[:notice] = "You have created book successfully."
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
-    flash[:notice] = "successfully"
+    if @user.update(user_params)
+      flash[:notice] = "You have created book successfully."
+      redirect_to book_path(@user.id)
+    else
+      render :edit
+    end
   end
 
 # 投稿データのストロングパラメータ

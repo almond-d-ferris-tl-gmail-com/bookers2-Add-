@@ -1,25 +1,25 @@
-<!--ログインしたら表示されるページBooks(.com/users/数字)→ログインしたユーザが今までCreateしたデータすべてが表示される-->
+<!--ログインしたら表示されるページBooks(.com/users/数字)-->
 <!--サインアップしたとき：Welcome! You have signed up successfully.-->
 <!--ログインしたとき：Signed in successfully.-->
-<%= render "/layouts/leftbar" , book:@book %>
-  <div class="col-md-8" offset-md-l>  <!--"col-lg-8"→"col-md-8" offset-md-lに変更-->
+<%= render "/layouts/leftbar" , book:@book, user:@user %>
+<div class="col-md-8" offset-md-l>  <!--"col-lg-8"→"col-md-8" offset-md-lに変更-->
 
-    <table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
       <h2>Books</h2>
         <% @books.each do |book| %>
           <tr>
           <!--投稿ユーザー画像-->
-            <td><%= image_tag 'no_image.jpg' %></td>
+            <td><%= link_to image_tag(current_user.get_profile_image(100,100), class: "image"), user_path(book.id) %><br>
           <!--Title-->
             <td><%= link_to book_path(book.id) do %>
             <%= book.title %>
@@ -29,9 +29,6 @@
             <td></td>
           </tr>
         <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 </div>
-</div>
-</div>
-<br>

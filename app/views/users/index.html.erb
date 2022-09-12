@@ -1,32 +1,29 @@
 <!--Users(.com/users)-->
-<%= render "/layouts/leftbar" , book:@book %>
+<%= render "/layouts/leftbar" , book:@book, user:current_user %>
   <div class="col-md-8" offset-md-l>  <!--"col-lg-8"→"col-md-8" offset-md-lに変更-->
 
     <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
+    <tbody>
       <h2>Users</h2>
-        <% @books.each do |book| %>
+        <% @users.each do |user| %>
           <tr>
           <!--投稿ユーザー画像-->
             <td><%= image_tag 'no_image.jpg' %></td>
           <!-- <p>ユーザーネーム-->
-            <td><%= book.user.name %></td>
-            <td><%= link_to "show", user_path(current_user) %></td>
+            <td><%= user.name %></td>
+            <td><%= link_to "show", user_path(user) %></td>
             <td></td>
           </tr>
         <% end %>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-<br>
+    </tbody>
+    </table>
+  </div>
