@@ -1,8 +1,6 @@
 <!--ログインしたら表示されるページBooks(.com/users/数字)-->
-<!--サインアップしたとき：Welcome! You have signed up successfully.-->
-<!--ログインしたとき：Signed in successfully.-->
 <%= render "/layouts/leftbar" , book:@book, user:@user %>
-<div class="col-md-8" offset-md-l>  <!--"col-lg-8"→"col-md-8" offset-md-lに変更-->
+<div class="col-md-8 offset-md-1">
 
   <table class="table table-striped">
     <thead>
@@ -32,3 +30,4 @@
     </tbody>
   </table>
 </div>
+

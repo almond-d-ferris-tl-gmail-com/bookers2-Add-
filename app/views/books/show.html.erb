@@ -1,6 +1,6 @@
 <!--Book detail(.com/books/数字)-->
 <%= render "/layouts/leftbar" , book:@book, user:@user %>
-<div class="col-md-8" offset-md-l>  <!--"col-lg-8"→"col-md-8" offset-md-lに変更-->
+<div class="col-md-8 offset-md-1">
 
 <!--他のユーザの投稿を変更しない-->
   <% if @user.id != current_user.id %>
