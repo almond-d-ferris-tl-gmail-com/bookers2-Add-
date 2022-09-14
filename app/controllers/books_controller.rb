@@ -24,7 +24,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @books = Book.all #同じアクション内で同じメソッドは使えない
-    @book.user_id = current_user.id
+    #@book.user_id = current_user.id
     @user = @book.user
     # if @book.user == current_user
     #   render "show"
@@ -35,7 +35,9 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    @book = Book.find(params[:id])
+    if @book.user != current_user
+      redirect_to books_path
+    end
   end
 
   def destroy
