@@ -71,4 +71,3 @@ end
       redirect_to books_path
     end
   end
-# .merge(user_id: current_user.id)
