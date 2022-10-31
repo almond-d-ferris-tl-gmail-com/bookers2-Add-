@@ -27,6 +27,8 @@
             <ul class="navbar-nav ml-auto">
 
             <% if user_signed_in? %><!--ログイン後-->
+            <%= render "/searches/form" %>
+            
             <li class="nav-item"><!--Home-->
               <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
               <i class="fas fa-home"></i> Home
